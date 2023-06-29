@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using SeaFoodStore.Models;
 
 namespace SeaFoodStore.Controllers
 {
+    [Authorize]
     public class CustomerTablesController : Controller
     {
         private readonly SeaFoodStoreContext _context;
@@ -54,6 +56,8 @@ namespace SeaFoodStore.Controllers
         // POST: CustomerTables/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+       
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("CustomerID,FirstName,LastName,Phone,Email,Street,City,State,ZipCode")] CustomerTable customerTable)
